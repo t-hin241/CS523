@@ -86,7 +86,7 @@ class SegmentTree(object):
         
         return updateVal(self.root, i, val)
 
-    def sumRange(self, i, j):
+    def RangeQuery(self, i, j):
         """
         sum of elements nums[i..j], inclusive.
         :type i: int
@@ -94,8 +94,8 @@ class SegmentTree(object):
         :rtype: int
         """
         #Helper function to calculate range sum
-        def rangeSum(root, i, j):
-            
+        def rangeQuery(root, i, j):
+
             #If the range exactly matches the root, we already have the sum
             if root.start == i and root.end == j:
                 return root.value
@@ -105,17 +105,22 @@ class SegmentTree(object):
             #If end of the range is less than the mid, the entire interval lies
             #in the left subtree
             if j <= mid:
-                return rangeSum(root.left, i, j)
+                return RangeQuery(root.left, i, j)
             
             #If start of the interval is greater than mid, the entire inteval lies
             #in the right subtree
             elif i >= mid + 1:
-                return rangeSum(root.right, i, j)
+                return RangeQuery(root.right, i, j)
             
             #Otherwise, the interval is split. So we calculate the sum recursively,
             #by splitting the interval
             else:
-                return rangeSum(root.left, i, mid) + rangeSum(root.right, mid+1, j)
+                if self.operation == 'sum':
+                    return RangeQuery(root.left, i, mid) + RangeQuery(root.right, mid+1, j)
+                elif self.operation == 'min':
+                    return RangeQuery(root.left, i, mid) if RangeQuery(root.left, i, mid) < root.value else RangeQuery(root.right, mid+1, j)
+                else:
+                    return RangeQuery(root.left, i, mid) if RangeQuery(root.left, i, mid) > root.value else RangeQuery(root.right, mid+1, j)
         
         return rangeSum(self.root, i, j)
                 
