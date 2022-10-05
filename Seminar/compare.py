@@ -20,7 +20,7 @@ for size in input_sizes:
 
 
     st_start = time.time()
-    st = SegmentTree(input, 'sum').sumRange(low, hi)
+    st = SegmentTree(input, 'sum').RangeQuery(low, hi)
     st_end = time.time()
     cpl.append(round((st_end - st_start) * 10**3, 4))
 
