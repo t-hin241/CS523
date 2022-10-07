@@ -1,0 +1,5 @@
+Viết một chương trình tạo một cây phân đoạn (tổng) và hàm truy xuất của nó
+Input: Một số nguyên n, n số nguyên tiếp theo là từng phần tử trong cây, 2 số nguyên i,j biểu thị cho đoạn cần truy xuất
+Output: Tổng trong đoạn [i,j]
+
+Link nộp bài: https://docs.google.com/forms/d/e/1FAIpQLSfKQgdSYryo6y-wK_gltRgVA0dMSGCGIveaq8IC-0NUluhiTA/viewform?usp=sf_link
